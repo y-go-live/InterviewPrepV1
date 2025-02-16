@@ -26,13 +26,13 @@ export async function GET(req: NextRequest) {
         },
       ],
     });
-
+    
     // Create Lisa
     const newFirstAgent = await retellClient.agent.create({
       response_engine: { llm_id: newModel.llm_id, type: "retell-llm" },
       voice_id: "11labs-Chloe",
       agent_name: "Lisa",
-    });
+    } as any);
 
     const newInterviewer = await InterviewerService.createInterviewer({
       agent_id: newFirstAgent.agent_id,
@@ -44,7 +44,7 @@ export async function GET(req: NextRequest) {
       response_engine: { llm_id: newModel.llm_id, type: "retell-llm" },
       voice_id: "11labs-Brian",
       agent_name: "Bob",
-    });
+    } as any);
 
     const newSecondInterviewer = await InterviewerService.createInterviewer({
       agent_id: newSecondAgent.agent_id,
